@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "esModuleInterop": true,
+    "target": "ESNext", // 编译后的js应为哪个版本
+    "module": "ESNext",
+    "moduleResolution": "Node", // 模块解析策略
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "~*": [
+        "src/*"
+      ],
+    },
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
