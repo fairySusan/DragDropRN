@@ -2,6 +2,10 @@ import React from 'react'
 import {DragDropContext, Droppable, Draggable  } from 'react-beautiful-dnd'
 import './views/home/home.less'
 import {deepTraverseById} from './utils/deepTraverse'
+import Notice from './components/notice'
+import News from './components/news'
+import Run from './components/run'
+import Email from './components/email'
 
 export default class App extends React.Component<any, any> {
   constructor (props) {
@@ -26,12 +30,12 @@ export default class App extends React.Component<any, any> {
           className: 'main-panel',
           children: [
             {name: 'block1',dropStyle: {display: 'flex', justifyContent: 'spaceBetween'}, children: [
-              {name: 'news',dropStyle: {},className: 'buisness-block'},
-              {name: 'notice', dropStyle: {},className: 'buisness-block'}
+              {name: 'news',dropStyle: {},className: 'buisness-block', component: <News></News>},
+              {name: 'notice', dropStyle: {},className: 'buisness-block', component: <Notice></Notice>}
             ], className: 'block', type: 'BLOCK',},
             {name: 'block2',dropStyle: {display: 'flex', justifyContent: 'spaceBetween'}, children: [
-              {name: 'run', dropStyle: {}, className: 'buisness-block'},
-              {name: 'email',dropStyle: {},className: 'buisness-block'}
+              {name: 'run', dropStyle: {}, className: 'buisness-block', component: <Run></Run>},
+              {name: 'email',dropStyle: {},className: 'buisness-block', component: <Email></Email>}
             ], className: 'block', type: 'BLOCK',}
         ]}
       ]},
@@ -110,7 +114,7 @@ export default class App extends React.Component<any, any> {
                           className={item.className}
                         >
                           {item.name}
-                          {item.children && this.renderLayout(item)}
+                          {item.children ? this.renderLayout(item) : item.component}
                         </div>
                       )
                     }
